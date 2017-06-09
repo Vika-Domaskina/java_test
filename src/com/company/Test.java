@@ -17,20 +17,20 @@ public class Test {
             try {
                 ochislo = Double.parseDouble(consoleInput);
                 if (ochislo < 0 || ochislo >= 1000000000) {
-                    continue;
+                    throw new NumberFormatException();
                 }
-                    break;
+                break;
             } catch (NumberFormatException e) {
                 System.out.println("Wrong number");
             }
         }
-        int whole_number = (int) ochislo;
+        long whole_number = (long) ochislo;
         //double edfdf = whole_number;
-        double not_whole_number = (int) ((ochislo * 100) - (whole_number * 100));
-        int[] chislo = new int[String.valueOf(ochislo).length() / 3 + 1];
+        int not_whole_number = (int) ((ochislo * 100 - whole_number * 100));
+        long[] chislo = new long[String.valueOf(ochislo).length() / 3 + 1];
         int delitel = 1000, noleuberatel = 1;
-        //System.out.println(whole_number);
-        //System.out.println(not_whole_number);
+        System.out.println(whole_number);
+        System.out.println(not_whole_number);
         //System.out.println(chislo);
         for (int i = 0; i < chislo.length; i++) {
             chislo[i] = (whole_number % delitel) / noleuberatel;
@@ -54,7 +54,8 @@ public class Test {
         System.out.println(int_to_string);
     }
 
-    static String integer_to_text(int a) {
+    static String integer_to_text(long b) {
+        int a = (int) b;
         String[] units = new String[]{"", "one ", "two ", "tree ", "four ", "five ", "six ", "seven ", "eight ", "nine "};
         String[] decimals = new String[]{"", "", "twenty ", "thirty ", "fourty ", "fifty ", "sixty ", "seventy ", " eighty ", "ninety ", "ten ", "eleven ", "twelve ", "thirteen ",
                 "fourteen ", "thirteen ", "thirteen ", "sixteen ", "seventeen ", "eighteen ", "nineteen "};
